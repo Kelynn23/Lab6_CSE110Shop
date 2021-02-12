@@ -1,7 +1,6 @@
 // Script.js
 
 window.addEventListener('DOMContentLoaded', () => {
-  // TODO
   if(localStorage.getItem("allProducts") == null){
     fetch("https://fakestoreapi.com/products")
       .then(response => response.json())
@@ -18,11 +17,15 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   */
   let itemList = document.getElementById('product-list');
+  console.log(theProducts);
   for (product of theProducts){
       let curProd = document.createElement('product-item');
-      //call a function that sets all attributes
-      //curProd.setProdAtt(product.id, product.title, product.price, 
-                        //product.description, product.image, product.category)
+      
+      curProd.imgSrc = product.image;
+      curProd.imgAlt = product.title;
+      curProd.titleSet = product.title;
+      curProd.priceSet = product.price;
+
       itemList.appendChild(curProd);
   }
 

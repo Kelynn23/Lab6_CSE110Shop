@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //create the product list
   let itemList = document.getElementById('product-list');
+  let counter = document.getElementById('cart-count');
 
   //iterate through the product list to add products
   for (product of theProducts){
@@ -21,10 +22,16 @@ window.addEventListener('DOMContentLoaded', () => {
       curProd.titleSet = product.title;
       curProd.priceSet = product.price;
       curProd.buttonSet = product.id;
-      //curProd.buttonInner = "Add to Cartgukhkjuyuk";
+
+      if(localStorage.getItem(product.id) == "true"){
+        curProd.buttonInner = "Remove from Cart";
+        counter.innerHTML = parseInt(counter.innerHTML) + 1;
+      }
+      else{
+        curProd.buttonInner = "Add to Cart";
+      }
 
       itemList.appendChild(curProd);
-      //console.log(document.getElementById(String(product.id)));
       curButton = curProd.buttonGet;
       curButton.addEventListener("click", () => handleCart(curProd));
   }
@@ -32,15 +39,16 @@ window.addEventListener('DOMContentLoaded', () => {
   function handleCart(curProd){
     let curButton = curProd.buttonGet;
     alert(curButton.innerHTML);
-    let counter = document.getElementById('cart-count');
     if (curButton.innerHTML == "Add to Cart")
     { 
       counter.innerHTML = parseInt(counter.innerHTML) + 1;
       curProd.buttonInner = "Remove from Cart";
+      localStorage.setItem(curProd.IDGet, true);
     }
     else{
       counter.innerHTML = parseInt(counter.innerHTML) - 1;
       curProd.buttonInner = "Add to Cart";
+      localStorage.setItem(curProd.IDGet, false);
     }
   };
 

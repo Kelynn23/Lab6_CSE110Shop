@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
     { 
       counter.innerHTML = parseInt(counter.innerHTML) + 1;
       curProd.buttonInner = "Remove from Cart";
+      console.log(curProd.IDGet);
       localStorage.setItem(curProd.IDGet, true);
     }
     else{

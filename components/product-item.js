@@ -1,11 +1,10 @@
-// product-item.js
 //constructor 
 class ProductItem extends HTMLElement {
   constructor() {
     //alert("reached constructor");
     super(); 
 
-    // Attach a shadow root
+    // create elements
     let shadowRoot = this.attachShadow({mode: 'open'});
     let style = document.createElement('style');
     let li = document.createElement('li');
@@ -28,6 +27,7 @@ class ProductItem extends HTMLElement {
     li.appendChild(pricePara);
     li.appendChild(button);
     
+    //set style for the page
     style.textContent = `
     .price {
       color: green;
@@ -53,7 +53,7 @@ class ProductItem extends HTMLElement {
       padding: 10px 20px;
       width: 200px;
     }
-    
+
     .product > button {
       background-color: rgb(255, 208, 0);
       border: none;
@@ -95,11 +95,12 @@ class ProductItem extends HTMLElement {
     `;
   }
 
-  //image setter
+  //image source setter
   set imgSrc(src){
     this.shadowRoot.querySelector("img").src = src;
   };
 
+  //image alt setter
   set imgAlt(alt){
     this.shadowRoot.querySelector("img").alt = alt;
   }

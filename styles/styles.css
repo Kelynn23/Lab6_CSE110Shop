@@ -39,6 +39,7 @@ nav {
   padding: 10px;
 }
 
+/* changed the path to relative for static testing */
 #shop-icon {
   content: url("../assets/shop-icon.png");
 }

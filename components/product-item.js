@@ -16,7 +16,6 @@ class ProductItem extends HTMLElement {
     let pricePara = document.createElement('p');
     pricePara.setAttribute("class", "price");
     let button = document.createElement('button');
-    button.innerHTML = "Add to Cart";
 
     // attach the created elements to the shadow dom
     shadowRoot.appendChild(style);
@@ -117,8 +116,6 @@ class ProductItem extends HTMLElement {
 
   set buttonSet(id){
     this.shadowRoot.querySelector("button").id = id;
-    //let currButton = this.shadowRoot.querySelector("button");
-    //currButton.addEventListener("click", () => {this.handleCart(currButton)});
   };
 
   set buttonInner(inner){
@@ -127,6 +124,10 @@ class ProductItem extends HTMLElement {
 
   get buttonGet(){
     return this.shadowRoot.querySelector("button");
+  }
+
+  get IDGet(){
+    return this.shadowRoot.querySelector("button").id;
   }
   
 };

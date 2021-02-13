@@ -1,10 +1,14 @@
 window.addEventListener('DOMContentLoaded', () => {
   //fetch data if not previously fetched
-  if(localStorage.getItem("allProducts") == null){
+  /*if(localStorage.getItem("allProducts") == null){
     fetch("https://fakestoreapi.com/products")
       .then(response => response.json())
       .then(data => localStorage.setItem("allProducts", JSON.stringify(data)))
-  }
+  }*/
+
+  fetch("https://fakestoreapi.com/products")
+      .then(response => response.json())
+      .then(data => localStorage.setItem("allProducts", JSON.stringify(data)))
 
   //retrieve the list of objects
   let theProducts = JSON.parse(localStorage.getItem("allProducts"));

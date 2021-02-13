@@ -16,8 +16,7 @@ class ProductItem extends HTMLElement {
     let pricePara = document.createElement('p');
     pricePara.setAttribute("class", "price");
     let button = document.createElement('button');
-    button.setAttribute("onclick", "alert('Added to Cart!')");
-    button.innerHTML = 'Add to Cart';
+    button.innerHTML = "Add to Cart";
 
     // attach the created elements to the shadow dom
     shadowRoot.appendChild(style);
@@ -75,6 +74,7 @@ class ProductItem extends HTMLElement {
       align-self: center;
       justify-self: center;
       width: 100%;
+      max-height: 300px;
     }
     
     .title {
@@ -115,15 +115,56 @@ class ProductItem extends HTMLElement {
     this.shadowRoot.querySelector(".price").innerHTML = '$'+price;
   };
 
+  set buttonSet(id){
+    this.shadowRoot.querySelector("button").id = id;
+    //let currButton = this.shadowRoot.querySelector("button");
+    //currButton.addEventListener("click", () => {this.handleCart(currButton)});
+  };
+
+  set buttonInner(inner){
+    this.shadowRoot.querySelector("button").innerHTML = String(inner);
+  }
+
+  get buttonGet(){
+    return this.shadowRoot.querySelector("button");
+  }
+  
 };
 
+/*
+if(this.shadowRoot.querySelector("button").innerHTML == "Add to Cart")
+    {
+      this.shadowRoot.querySelector("button").innerHTML = "Remove from Cart";
+      alert("Added to cart");
+    }
+    else {
+      this.shadowRoot.querySelector("button").innerHTML = "Add to Cart";
+    }
+*/
 
-function connectedCallback() {
-  console.log('Custom square element added to page.');
-  updateStyle(this);
-};
+/*
+function handleCart() {
+  if(button == "Add to Cart")
+    {
+      button = "Remove from Cart";
+    }
+  else {
+      button = "Add to Cart";
+  }
+}
+*/
+
+
+
 
 customElements.define('product-item', ProductItem);
 
 //for button: define function inside script.js, set that function that modifies cart +memory stuff
 // to be event listener
+
+/*
+function connectedCallback() {
+  console.log('Custom square element added to page.');
+  updateStyle(this);
+};
+*/
